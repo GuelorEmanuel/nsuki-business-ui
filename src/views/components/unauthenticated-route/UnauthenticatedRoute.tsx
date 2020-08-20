@@ -7,21 +7,23 @@ import IAuthState from "../../../stores/auth/models/IAuthState";
 interface IStateToProps {
   readonly auth: IAuthState;
 }
-interface ProtectedRouteProps extends RouteProps {
+interface UnauthenticatedRouteProps extends RouteProps {
   authenticationPath: string;
 }
 
 const mapStateToProps = (
   state: IStore,
-  ownProps: ProtectedRouteProps
+  ownProps: UnauthenticatedRouteProps
 ): IStateToProps => ({
   auth: state.auth
 });
 
-class ProtectedRoute extends Route<ProtectedRouteProps & IStateToProps> {
+class UnauthenticatedRoute extends Route<
+  UnauthenticatedRouteProps & IStateToProps
+> {
   public render() {
     let redirectPath: string = "";
-    if (!this.props.auth.token) {
+    if (this.props.auth.token) {
       redirectPath = this.props.authenticationPath;
     }
 
@@ -38,5 +40,5 @@ class ProtectedRoute extends Route<ProtectedRouteProps & IStateToProps> {
   }
 }
 
-export { ProtectedRoute as Unconnected };
-export default connect(mapStateToProps)(ProtectedRoute);
+export { UnauthenticatedRoute as Unconnected };
+export default connect(mapStateToProps)(UnauthenticatedRoute);

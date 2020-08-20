@@ -6,7 +6,7 @@
 export default function baseEnv(baseApi: string) {
   return {
     route: {
-      baseRoute: '/react-redux-architecture', // Fixes issue with Github Pages
+      baseRoute: "/" // Fixes issue with Github Pages
     },
     api: {
       cast: `${baseApi}/shows/:showId/cast`,
@@ -14,12 +14,13 @@ export default function baseEnv(baseApi: string) {
       shows: `${baseApi}/shows/:showId`,
       auth: `${baseApi}/auth/google?scope=email%20profile`,
       auth_get_credential: `${baseApi}/auth/get_credential/:token`,
+      users: `${baseApi}/users/:id`,
       callBack: `${baseApi}/auth/google?scope=email profile&redirectTo=https://localhost:3000/auth/google/callback`,
-      errorExample: 'https://httpstat.us/520',
+      errorExample: "https://httpstat.us/520"
     },
     isProduction: true,
     isDevelopment: false,
-    isTesting: false,
+    isTesting: false
   };
 }
 

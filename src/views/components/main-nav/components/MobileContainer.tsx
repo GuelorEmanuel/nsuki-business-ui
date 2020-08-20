@@ -1,5 +1,5 @@
-import environment from 'environment';
-import React from 'react';
+import environment from "environment";
+import React from "react";
 import {
   Button,
   Container,
@@ -8,27 +8,29 @@ import {
   Responsive,
   Segment,
   Sidebar
-} from 'semantic-ui-react';
+} from "semantic-ui-react";
 
-import LandingPageHeading from './LandingPageHeading';
-import UserModel from '../../../../stores/auth/models/users/UserModel';
-
+import LandingPageHeading from "./LandingPageHeading";
+import IAuthState from "../../../../stores/auth/models/IAuthState";
 
 interface IProps {
   isLandingPage?: boolean;
-  user: UserModel | null;
+  auth: IAuthState;
 }
 interface IState {
   sidebarOpened: boolean;
 }
 
 const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
+  const isSSR = typeof window === "undefined";
 
-  return isSSR ? Number(Responsive.onlyTablet.minWidth) : window.innerWidth
-}
+  return isSSR ? Number(Responsive.onlyTablet.minWidth) : window.innerWidth;
+};
 
-export default class MobileContainer extends React.PureComponent<IProps, IState> {
+export default class MobileContainer extends React.PureComponent<
+  IProps,
+  IState
+> {
   constructor(props: IProps) {
     super(props);
 
@@ -37,13 +39,13 @@ export default class MobileContainer extends React.PureComponent<IProps, IState>
     };
   }
 
-  handleSidebarHide = () => this.setState({ sidebarOpened: false })
+  handleSidebarHide = () => this.setState({ sidebarOpened: false });
 
-  handleToggle = () => this.setState({ sidebarOpened: true })
+  handleToggle = () => this.setState({ sidebarOpened: true });
 
   render() {
-    const { children, isLandingPage } = this.props
-    const { sidebarOpened } = this.state
+    const { children, isLandingPage, auth } = this.props;
+    const { sidebarOpened } = this.state;
 
     return (
       <Responsive
@@ -53,52 +55,69 @@ export default class MobileContainer extends React.PureComponent<IProps, IState>
       >
         <Sidebar
           as={Menu}
-          animation='push'
+          animation="push"
           inverted
           onHide={this.handleSidebarHide}
           vertical
           visible={sidebarOpened}
         >
-          <Menu.Item as='a'
+          <Menu.Item
+            as="a"
             style={{
-              fontSize: '1.5em',
-              fontWeight: 'normal',
-              marginTop: '1.5em',
+              fontSize: "1.5em",
+              fontWeight: "normal",
+              marginTop: "1.5em"
             }}
           >
-             Ns&uacute;ki
+            Ns&uacute;ki
           </Menu.Item>
-          <Menu.Item as='a'>Log in</Menu.Item>
-          <Menu.Item as='a'>Start free trial</Menu.Item>
+          {!auth.token && <Menu.Item as="a">Log in</Menu.Item>}
+          {!auth.token && <Menu.Item as="a">Start free trial</Menu.Item>}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
           <Segment
             inverted
-            textAlign='center'
-            style={{ minHeight: 350, padding: '1em 0em' }}
+            textAlign="center"
+            style={{ minHeight: 350, padding: "1em 0em" }}
             vertical
           >
             <Container>
-              <Menu inverted pointing secondary size='large'>
+              <Menu inverted pointing secondary size="large">
                 <Menu.Item onClick={this.handleToggle}>
-                  <Icon name='sidebar' />
+                  <Icon name="sidebar" />
                 </Menu.Item>
-                <Menu.Item position='right'>
-                  <Button href={environment.api.callBack} as='a' primary style={{ marginLeft: '0.5em' }}>
-                    Log in
-                  </Button> 
-                  <Button href={environment.api.callBack} as='a' primary style={{ marginLeft: '0.5em' }}>
-                    Start free trial
-                  </Button>
+                <Menu.Item position="right">
+                  {!auth.token && (
+                    <Button
+                      href={environment.api.callBack}
+                      as="a"
+                      primary
+                      style={{ marginLeft: "0.5em" }}
+                    >
+                      Log in
+                    </Button>
+                  )}
+                  {!auth.token && (
+                    <Button
+                      href={environment.api.callBack}
+                      as="a"
+                      primary
+                      style={{ marginLeft: "0.5em" }}
+                    >
+                      Start free trial
+                    </Button>
+                  )}
                 </Menu.Item>
               </Menu>
             </Container>
-            {isLandingPage && <LandingPageHeading mobile={true} />}
+            {isLandingPage && !auth.token && (
+              <LandingPageHeading mobile={true} />
+            )}
           </Segment>
           {children}
         </Sidebar.Pusher>
       </Responsive>
-    )
+    );
   }
 }

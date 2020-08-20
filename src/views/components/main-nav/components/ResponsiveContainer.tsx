@@ -1,20 +1,29 @@
-import React from 'react';
+import React from "react";
 
-import DesktopContainer from './DesktopContainer';
-import MobileContainer from './MobileContainer';
-import UserModel from '../../../../stores/auth/models/users/UserModel';
-
+import DesktopContainer from "./DesktopContainer";
+import MobileContainer from "./MobileContainer";
+import IAuthState from "../../../../stores/auth/models/IAuthState";
 
 type ResponsiveContainerProps = {
   isLandingPage: boolean;
-  user: UserModel | null;
-}
+  auth: IAuthState;
+  logout: () => void;
+};
 
-const ResponsiveContainer: React.FC<ResponsiveContainerProps> = ({ children, isLandingPage, user }) => (
+const ResponsiveContainer: React.FC<ResponsiveContainerProps> = ({
+  children,
+  isLandingPage,
+  auth,
+  logout
+}) => (
   <div>
-    <DesktopContainer isLandingPage={isLandingPage} user={user}>{children}</DesktopContainer>
-    <MobileContainer isLandingPage={isLandingPage} user={user}>{children}</MobileContainer>
+    <DesktopContainer isLandingPage={isLandingPage} auth={auth} logout={logout}>
+      {children}
+    </DesktopContainer>
+    <MobileContainer isLandingPage={isLandingPage} auth={auth}>
+      {children}
+    </MobileContainer>
   </div>
-)
+);
 
 export default ResponsiveContainer;
