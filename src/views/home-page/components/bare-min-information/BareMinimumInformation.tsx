@@ -1,4 +1,4 @@
-import { Button, Header, Container} from "semantic-ui-react"
+import { Button, Header, Container, Icon} from "semantic-ui-react"
 import CalendarImport from "./components/calendar-import/CalendarImport"
 import AddService from "./components/add-service/AddService"
 import Deposit from "./components/deposit/Deposit"
@@ -106,7 +106,8 @@ class BareMinimumInformation extends React.Component<IProps, IState> {
                                             }
                                         }
                                     }>
-                                     <Header as='h3' textAlign='left'>← Choose Calendar</Header>
+                                     <Header as='h3' textAlign='left'>
+                                        <Icon name="arrow alternate circle left"/>Choose Calendar</Header>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +157,8 @@ class BareMinimumInformation extends React.Component<IProps, IState> {
                                             }
                                         }
                                      }>
-                                    <Header as='h3' textAlign='left'>← Add Service</Header>
+                                    <Header as='h3' textAlign='left'>
+                                        <Icon name="arrow alternate circle left"/>Add Service</Header>
                                 </div>
                             </div>
                         </div>
