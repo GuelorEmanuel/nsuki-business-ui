@@ -76,7 +76,7 @@ export default class DesktopContainer extends React.PureComponent<
           onBottomPassedReverse={this.hideFixedMenu}
         >
           {auth.token && (
-            <div
+            <div className="container"
               style={{
                 float: "left",
                 margin: "0em 3em 1em 0em",
@@ -87,20 +87,21 @@ export default class DesktopContainer extends React.PureComponent<
             >
               <Menu
                 size="large"
-                icon="labeled"
                 style={{
                   position: "relative",
-                  left: "10px",
-                  transition: "left 0.5s ease"
+                  left: "0px",
+                  transition: "left 0.5s ease",
+                  height: '100vh'
                 }}
                 vertical
+                borderless
               >
                 <Menu.Item
                   name="home"
                   active={activeItem === "home"}
                   onClick={this.handleItemClick}
                 >
-                  <Icon name="home" />
+                  <Icon style={{float: 'left', paddingRight: '2em'}} name="home"/>
                   Home
                 </Menu.Item>
                 <Menu.Item
@@ -108,7 +109,7 @@ export default class DesktopContainer extends React.PureComponent<
                   active={activeItem === "clients"}
                   onClick={this.handleItemClick}
                 >
-                  <Icon name="users" />
+                  <Icon style={{float: 'left', paddingRight: '2em'}} name="users" />
                   Clients
                 </Menu.Item>
                 <Menu.Item
@@ -117,13 +118,13 @@ export default class DesktopContainer extends React.PureComponent<
                   onClick={this.handleItemClick}
                 >
                   Services
-                  <Icon name="cut" />
+                  <Icon style={{float: 'left', paddingRight: '2em'}} name="cut" />
                 </Menu.Item>
                 <Menu.Item
                   active={activeItem === "settings"}
                   onClick={this.handleItemClick}
                 >
-                  <Icon name="settings" />
+                  <Icon style={{float: 'left', paddingRight: '2em'}} name="settings" />
                   Settings
                 </Menu.Item>
               </Menu>
