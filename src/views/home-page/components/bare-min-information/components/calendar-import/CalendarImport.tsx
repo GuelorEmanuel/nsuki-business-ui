@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dropdown, Form, Header, Label } from 'semantic-ui-react'
 import { IFormFieldData, IDropDownItemProps } from '../../Interface'
+import styles from './CalendarImport.module.scss';
 
 interface IProps {
     readonly calendarList: IDropDownItemProps[];
@@ -46,7 +47,7 @@ class CalendarImport extends React.Component<IProps, IState> {
             <div className='ui container'>
                 <Header as='h5' textAlign='center'>Which calendar should Nsunki use to schedule?
                     { requiredFields.indexOf('calendar') > -1 &&
-                        <span style={{color:'red'}}>*</span>
+                        <span className={ styles.requiredStyle }>*</span>
                     }
                 </Header>
                 <Form className='ui form'>

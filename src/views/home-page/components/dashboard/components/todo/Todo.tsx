@@ -2,6 +2,7 @@ import { Card, Button } from "semantic-ui-react";
 import  React from "react";
 import { Link } from 'react-router-dom';
 import { ITodo } from "../../Interface";
+import styles from './Todo.module.scss';
 
 interface IProps {
     readonly todoList: ITodo[];
@@ -25,10 +26,10 @@ class Todo extends React.Component<IProps> {
                                     </Card.Description>
                                     
                                 </Card.Content>
-                                <Card.Content extra style={{ backgroundColor: 'white', border: 'none' }}>
-                                <div className='ui bottom button' style={{ backgroundColor: 'white', width: '100%'}}>
+                                <Card.Content extra>
+                                <div className={'ui bottom button' + styles.buttonContainer } >
                                     <Link to={this.props.todoLink}>
-                                        <Button color='yellow' style={{ width: '100%'}}>
+                                        <Button color='yellow' className={ styles.buttonStretch }>
                                             Start
                                         </Button>
                                     </Link>

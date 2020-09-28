@@ -1,9 +1,11 @@
 import { Header, Container, Icon} from "semantic-ui-react"
 import Revenue from "./components/revenue/Revenue"
 import Filter from "./components/filter/Filter"
+import styles from './Dashboard.module.scss';
 import Appointment from "./components/appointment/Appointment"
 import Todo from "./components/todo/Todo"
 import React from "react";
+
 
 interface IProps {}
 interface IState {}
@@ -111,7 +113,7 @@ class Dashboard extends React.Component<IProps, IState> {
     public render(): JSX.Element { 
         const revenueProp = {amount: formatter.format(amount), month: currentMonth }
         return <>
-        <Container style={{width: '94%', paddingLeft: '20em'}}>
+        <Container className={styles.dashboardContainer}>
             <div className="centered ui grid">
                 <div className="row">
                     <div className="six wide column" >
@@ -122,7 +124,7 @@ class Dashboard extends React.Component<IProps, IState> {
                     </div>
                 </div>
             </div>
-            <div style={{overflow: 'auto', maxHeight: '80vh', marginTop: '2em'}} className="centered ui grid">
+            <div className={"centered ui grid " + styles.scrollview}>
                 <div className="row">
                     <div className="centered sixteen wide column">
                         <Header as='h3'>
