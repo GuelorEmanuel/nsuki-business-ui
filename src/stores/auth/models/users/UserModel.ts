@@ -3,6 +3,7 @@ import { BaseModel } from "sjs-base-model";
 /*
     // Returned Api Data Sample
     {
+      "id": 0,
       "email": "ncstech07@gmail.com",
       "first_name": "Ncs",
       "last_name": "Tech",
@@ -14,6 +15,7 @@ export default class UserModel extends BaseModel {
   public readonly id: number | undefined = undefined;
   public readonly first_name: string = "";
   public readonly last_name: string = "";
+  public readonly email: string = "";
   public readonly verified: boolean = false;
   public readonly image: string = "";
 

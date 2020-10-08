@@ -90,7 +90,9 @@ export class MainNav extends React.PureComponent<Props, IState> {
         logout={this.logout}
       >
         {children}
-        {!auth.token && <Footer languageOptions={this.state.languageOptions} />}
+        {!auth.nbs_refresh_token && (
+          <Footer languageOptions={this.state.languageOptions} />
+        )}
       </ResponsiveContainer>
     );
   }

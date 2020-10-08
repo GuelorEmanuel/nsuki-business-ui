@@ -71,8 +71,10 @@ export default class MobileContainer extends React.PureComponent<
           >
             Ns&uacute;ki
           </Menu.Item>
-          {!auth.token && <Menu.Item as="a">Log in</Menu.Item>}
-          {!auth.token && <Menu.Item as="a">Start free trial</Menu.Item>}
+          {!auth.nbs_refresh_token && <Menu.Item as="a">Log in</Menu.Item>}
+          {!auth.nbs_refresh_token && (
+            <Menu.Item as="a">Start free trial</Menu.Item>
+          )}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -88,7 +90,7 @@ export default class MobileContainer extends React.PureComponent<
                   <Icon name="sidebar" />
                 </Menu.Item>
                 <Menu.Item position="right">
-                  {!auth.token && (
+                  {!auth.nbs_refresh_token && (
                     <Button
                       href={environment.api.callBack}
                       as="a"
@@ -98,7 +100,7 @@ export default class MobileContainer extends React.PureComponent<
                       Log in
                     </Button>
                   )}
-                  {!auth.token && (
+                  {!auth.nbs_refresh_token && (
                     <Button
                       href={environment.api.callBack}
                       as="a"
@@ -111,7 +113,7 @@ export default class MobileContainer extends React.PureComponent<
                 </Menu.Item>
               </Menu>
             </Container>
-            {isLandingPage && !auth.token && (
+            {isLandingPage && !auth.nbs_refresh_token && (
               <LandingPageHeading mobile={true} />
             )}
           </Segment>

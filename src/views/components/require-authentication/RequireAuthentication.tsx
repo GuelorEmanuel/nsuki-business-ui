@@ -27,7 +27,7 @@ class RequireAuthentication extends React.Component<
   async componentDidMount(): Promise<void> {
     await this.props.dispatch(AuthAction.requestAuth());
 
-    if (this.props.auth.token) {
+    if (this.props.auth.nbs_refresh_token) {
       this.props.history.push(RouteEnum.Admin);
     } else {
       this.props.history.push(RouteEnum.LandingPage);
@@ -36,7 +36,7 @@ class RequireAuthentication extends React.Component<
 
   public render(): JSX.Element {
     const { auth } = this.props;
-    const isLoading = auth.token === "";
+    const isLoading = auth.nbs_refresh_token === "";
 
     return <LoadingIndicator isActive={isLoading} />;
   }

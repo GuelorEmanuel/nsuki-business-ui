@@ -6,8 +6,10 @@ import AuthModel from "./models/AuthModel";
 
 export default class AuthReducer extends BaseReducer<IAuthState> {
   public readonly initialState: IAuthState = {
-    token: "",
-    expires: 0,
+    nbs_refresh_token: "",
+    nbs_refresh_exp: 0,
+    nbs_access_token: "",
+    nbs_access_exp: 0,
     user: undefined
   };
 
@@ -17,8 +19,18 @@ export default class AuthReducer extends BaseReducer<IAuthState> {
   ): IAuthState {
     return {
       ...state,
-      token: action.payload?.token ? action.payload?.token : "",
-      expires: action.payload?.expires ? action.payload?.expires : 0,
+      nbs_refresh_token: action.payload?.nbs_refresh_token
+        ? action.payload?.nbs_refresh_token
+        : "",
+      nbs_refresh_exp: action.payload?.nbs_refresh_exp
+        ? action.payload?.nbs_refresh_exp
+        : 0,
+      nbs_access_token: action.payload?.nbs_access_token
+        ? action.payload?.nbs_access_token
+        : "",
+      nbs_access_exp: action.payload?.nbs_access_exp
+        ? action.payload?.nbs_access_exp
+        : 0,
       user: action.payload?.user ? action.payload.user : undefined
     };
   }
