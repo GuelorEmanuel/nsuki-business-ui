@@ -13,7 +13,7 @@ import { Container } from "semantic-ui-react";
 import LandingPageHeading from "../components/main-nav/components/LandingPageHeading";
 import { runInThisContext } from "vm";
 import React from "react";
-import BareMinimumInformation from "./components/bare-min-information/BareMinimumInformation"
+import BareMinimumInformation from "./components/bare-min-information/BareMinimumInformation";
 
 interface IProps {}
 interface IState {}
@@ -29,21 +29,18 @@ const mapStateToProps = (state: IStore, ownProps: IProps): IStateToProps => ({
   ])
 });
 
-
 class HomePage extends React.Component<
   IProps & IStateToProps & ReduxProps<any, IRouteParams>,
   IState
 > {
-                  
   public render(): JSX.Element {
     const { isRequesting } = this.props;
-    
+
     return (
-      <div className={styles.wrapper}>
-        <Container style={{ margin: 200 }}>
+      <div style={{ paddingLeft: "300px", paddingRight: "20px" }}>
+        <Container style={{ margin: 150 }}>
           <BareMinimumInformation />
-        
-        
+
           {/*
           <LoadingIndicator isActive={isRequesting}>
             <MainOverview />
