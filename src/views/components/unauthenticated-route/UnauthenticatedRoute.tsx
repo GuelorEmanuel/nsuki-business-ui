@@ -23,7 +23,7 @@ class UnauthenticatedRoute extends Route<
 > {
   public render() {
     let redirectPath: string = "";
-    if (this.props.auth.token) {
+    if (this.props.auth.nbs_refresh_token) {
       redirectPath = this.props.authenticationPath;
     }
 
