@@ -75,8 +75,9 @@ export default class DesktopContainer extends React.PureComponent<
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
-          {auth.token && (
-            <div className="container"
+
+          {auth.nbs_refresh_token && (
+            <div
               style={{
                 float: "left",
                 margin: "0em 3em 1em 0em",
@@ -136,7 +137,7 @@ export default class DesktopContainer extends React.PureComponent<
             vertical
           >
             <Menu
-              fixed={auth.token || fixed ? "top" : undefined}
+              fixed={auth.nbs_refresh_token || fixed ? "top" : undefined}
               pointing={!fixed}
               secondary={!fixed}
               size="large"
@@ -147,7 +148,11 @@ export default class DesktopContainer extends React.PureComponent<
               <Container>
                 <Menu.Item
                   as={MenuNavLink}
-                  to={!auth.token ? RouteEnum.LandingPage : RouteEnum.Admin}
+                  to={
+                    !auth.nbs_refresh_token
+                      ? RouteEnum.LandingPage
+                      : RouteEnum.Admin
+                  }
                   name="Home"
                   style={{
                     fontSize: "1.5em",
@@ -157,26 +162,26 @@ export default class DesktopContainer extends React.PureComponent<
                   Ns&uacute;ki
                 </Menu.Item>
                 <Menu.Item position="right">
-                  {!auth.token && (
+                  {!auth.nbs_refresh_token && (
                     <Menu.Item
                       as={MenuNavLink}
                       to={RouteEnum.Episodes}
                       name="Pricing"
                     />
                   )}
-                  {!auth.token && (
+                  {!auth.nbs_refresh_token && (
                     <Menu.Item
                       as={MenuNavLink}
                       to={RouteEnum.Home}
                       name="Resources"
                     />
                   )}
-                  {!auth.token && (
+                  {!auth.nbs_refresh_token && (
                     <Menu.Item href={environment.api.callBack} as="a">
                       Log in
                     </Menu.Item>
                   )}
-                  {!auth.token && (
+                  {!auth.nbs_refresh_token && (
                     <Button
                       href={environment.api.callBack}
                       as="a"
@@ -187,7 +192,7 @@ export default class DesktopContainer extends React.PureComponent<
                     </Button>
                   )}
 
-                  {auth.token && (
+                  {auth.nbs_refresh_token && (
                     <Dropdown
                       trigger={
                         <span>
@@ -211,7 +216,7 @@ export default class DesktopContainer extends React.PureComponent<
                 </Menu.Item>
               </Container>
             </Menu>
-            {isLandingPage && !auth.token && (
+            {isLandingPage && !auth.nbs_refresh_token && (
               <LandingPageHeading mobile={false} />
             )}
           </Segment>

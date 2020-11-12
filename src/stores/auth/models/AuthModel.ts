@@ -4,9 +4,12 @@ import UserModel from "./users/UserModel";
 /*
     // Returned Api Data Sample
     {
-      "token": "kkkkk.lllll..jjjjj"
-      "expires": 0
+      "nbs_refresh_token": "kkkkk.lllll..jjjjj",
+      "nbs_refresh_exp": 0,
+      "nbs_access_token": "kkkki.luhhhhh.jjj",
+      "nbs_access_exp": 0,
       "user": {
+        "id": 0,
         "email": "ncstech07@gmail.com",
         "first_name": "Ncs",
         "last_name": "Tech".
@@ -15,8 +18,10 @@ import UserModel from "./users/UserModel";
     }
  */
 export default class AuthModel extends BaseModel {
-  public readonly token: string = "";
-  public readonly expires: number = 0;
+  public readonly nbs_refresh_token: string = "";
+  public readonly nbs_refresh_exp: number = 0;
+  public readonly nbs_access_token: string = "";
+  public readonly nbs_access_exp: number = 0;
   public readonly user?: UserModel = undefined;
 
   /*
