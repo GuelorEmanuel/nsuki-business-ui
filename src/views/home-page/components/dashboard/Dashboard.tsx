@@ -95,8 +95,8 @@ const todoList = [
 ];
 
 // test data
-var curretDate = new Date().toLocaleString('en-us',{month:'long', year:'numeric', day:'numeric'});
-var currentMonth = curretDate.split(" ", 2)[0];
+var currentDate = new Date().toLocaleString('en-us',{month:'long', year:'numeric', day:'numeric'});
+var currentMonth = currentDate.split(" ", 2)[0];
 var amount = 100.00
 var formatter = new Intl.NumberFormat(undefined, {
     style: 'currency',

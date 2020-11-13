@@ -5,6 +5,7 @@ enum RouteEnum {
   Home = "/admin/home",
   Episodes = "/episodes",
   About = "/about",
+  Dashboard = "/dashboard",
   Callback = "/auth/:provider/callback"
 }
 
