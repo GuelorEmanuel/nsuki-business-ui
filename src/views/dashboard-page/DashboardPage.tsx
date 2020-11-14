@@ -104,7 +104,7 @@ var formatter = new Intl.NumberFormat(undefined, {
   });
 
 
-class Dashboard extends React.Component<IProps, IState> {
+class DashboardPage extends React.Component<IProps, IState> {
     
     constructor(props: IProps) { 
         super(props);
@@ -161,4 +161,4 @@ class Dashboard extends React.Component<IProps, IState> {
     }
 }
 
-export default Dashboard
+export default DashboardPage
