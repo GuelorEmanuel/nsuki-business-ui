@@ -15,6 +15,7 @@ const HomePage = lazy(() => import("./home-page/HomePage"));
 const NotFoundPage = lazy(() => import("./not-found-page/NotFoundPage"));
 const EpisodesPage = lazy(() => import("./episodes-page/EpisodesPage"));
 const AboutPage = lazy(() => import("./about-page/AboutPage"));
+const CustomerProfilePage = lazy(() => import("./customer-profile-page/CustomerProfilePage"));
 const RequireAuthentication = lazy(() =>
   import("./components/require-authentication/RequireAuthentication")
 );
@@ -62,6 +63,12 @@ export default class App extends React.Component<IProps, IState> {
                 authenticationPath={RouteEnum.LandingPage}
                 path={RouteEnum.Admin}
                 component={HomePage}
+              />
+              <ProtectedRoute
+                exact={true}
+                authenticationPath={RouteEnum.Admin}
+                path={RouteEnum.CustomerProfile}
+                component={CustomerProfilePage}
               />
               <Route component={NotFoundPage} />
             </Switch>
