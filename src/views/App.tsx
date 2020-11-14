@@ -9,6 +9,7 @@ import RouteEnum from "../constants/RouteEnum";
 import MainNav from "./components/main-nav/MainNav";
 import LoadingIndicator from "./components/loading-indicator/LoadingIndicator";
 import Toasts from "./components/toasts/Toasts";
+import Dashboard from "./dashboard/Dashboard";
 
 const LandingPage = lazy(() => import("./landing-page/LandingPage"));
 const HomePage = lazy(() => import("./home-page/HomePage"));
@@ -62,6 +63,12 @@ export default class App extends React.Component<IProps, IState> {
                 authenticationPath={RouteEnum.LandingPage}
                 path={RouteEnum.Admin}
                 component={HomePage}
+              />
+              <ProtectedRoute
+                exact={true}
+                authenticationPath={RouteEnum.Admin}
+                path={RouteEnum.Dashboard}
+                component={Dashboard}
               />
               <Route component={NotFoundPage} />
             </Switch>
