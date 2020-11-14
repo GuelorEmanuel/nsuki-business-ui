@@ -4,7 +4,7 @@ import ScheduleManagement from "./components/ScheduleManagement"
 import { IAppointment } from "./Interface"
 
 import React from "react";
-import { networkInterfaces } from "os";
+
 
 
 interface IProps {}
@@ -36,7 +36,7 @@ const imageList:Array<string> = [
 ]
 
 
-class Appointment extends React.Component<IProps, IState> {
+class CustomerProfilePage extends React.Component<IProps, IState> {
     
     constructor(props: IProps) { 
         super(props);
@@ -45,7 +45,7 @@ class Appointment extends React.Component<IProps, IState> {
     public render(): JSX.Element { 
         
         return <>
-        <Container>
+        <Container style={{ paddingLeft: "300px", paddingRight: "20px", margin: 150 }}>
             <Grid divided='vertically'>
                 <Grid.Row columns={2}>
                     <Grid.Column>
@@ -62,5 +62,5 @@ class Appointment extends React.Component<IProps, IState> {
     }
 }
 
-export default Appointment
+export default CustomerProfilePage
 
