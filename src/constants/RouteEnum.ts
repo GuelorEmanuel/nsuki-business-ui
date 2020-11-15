@@ -6,6 +6,7 @@ enum RouteEnum {
   Episodes = "/episodes",
   About = "/about",
   Dashboard = "/dashboard",
+  CustomerProfile = "/customerprofile",
   Callback = "/auth/:provider/callback"
 }
 

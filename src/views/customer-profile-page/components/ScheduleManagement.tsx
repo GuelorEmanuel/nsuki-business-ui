@@ -58,9 +58,12 @@ class ScheduleManagement extends React.Component<IProps, IState> {
                                     <div className="column"><Button negative fluid>Cancel</Button></div>
                                 </div>
                             </div>
-                            <Divider section />
-                        </div>
-                        
+
+                            { appointmentList[appointmentList.length-1] != appointment &&  
+                                <Divider section />
+                            }
+
+                        </div>                        
 
                         ))
                     }
