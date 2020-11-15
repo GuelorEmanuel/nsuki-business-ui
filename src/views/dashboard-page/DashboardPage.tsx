@@ -104,7 +104,7 @@ var formatter = new Intl.NumberFormat(undefined, {
   });
 
 
-class Dashboard extends React.Component<IProps, IState> {
+class DashboardPage extends React.Component<IProps, IState> {
     
     constructor(props: IProps) { 
         super(props);
@@ -113,7 +113,7 @@ class Dashboard extends React.Component<IProps, IState> {
     public render(): JSX.Element { 
         const revenueProp = {amount: formatter.format(amount), month: currentMonth }
         return <>
-        <Container className={styles.dashboardContainer}>
+        <Container className={styles.dashboardContainer} style={{ margin: 150, paddingLeft: "300px", paddingRight: "20px" }}>
             <div className="centered ui grid">
                 <div className="row">
                     <div className="six wide column" >
@@ -156,8 +156,9 @@ class Dashboard extends React.Component<IProps, IState> {
                 
             </div>
         </Container>
+        
         </>
     }
 }
 
-export default Dashboard
+export default DashboardPage
