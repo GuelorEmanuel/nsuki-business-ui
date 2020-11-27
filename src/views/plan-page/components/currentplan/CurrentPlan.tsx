@@ -8,6 +8,7 @@ interface IProps {
     readonly currentPlan: IPlan;
     readonly username: string;
     readonly paymentOption: string;
+    handleBackClick():void;
 }
 
 interface IState {}

@@ -33,7 +33,8 @@ class PlanPage extends React.Component<IProps, IState> {
         super(props);
     }
 
-    updateHandler = (selectedPlanType: PlanType) => {}
+    updateHandler = (selectedPlanType: PlanType) => {/* define handle body here */}
+    handleBackClick = () => {/* define handle body here */}
 
     public render(): JSX.Element { 
         
@@ -45,7 +46,8 @@ class PlanPage extends React.Component<IProps, IState> {
                         <CurrentPlan profilePhotoUri="https://i.pinimg.com/474x/db/0c/80/db0c80b6458ae43c315870f3412ddf15.jpg"
                                      currentPlan={currentPlan}
                                      username="Linda Ray"
-                                     paymentOption={selectedPaymentOption}/>
+                                     paymentOption={selectedPaymentOption}
+                                     handleBackClick={this.handleBackClick}/>
                     </Grid.Column>
                     <Grid.Column width='10' className={styles.upgradePlanColumn}>
                         <Upgrade upgradePlan={upgradePlan} updateHandler={this.updateHandler}/>    
