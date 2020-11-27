@@ -26,7 +26,7 @@ class HomePage extends React.Component<
   IState
 > {
   public render(): JSX.Element {
-    const { isRequesting } = this.props;
+   // const { isRequesting } = this.props;
 
     return (
       <div style={{ paddingLeft: "300px", paddingRight: "20px" }}>

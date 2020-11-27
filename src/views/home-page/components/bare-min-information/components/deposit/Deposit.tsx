@@ -90,7 +90,7 @@ class Deposit extends React.Component<IProps, IState> {
     }
 
     public render(): JSX.Element { 
-        const {dataOnChange, depositType, amount, requiredFields, errorFields} = this.props;
+        const {dataOnChange, requiredFields, errorFields} = this.props;
         
         return <>
             <Form>
