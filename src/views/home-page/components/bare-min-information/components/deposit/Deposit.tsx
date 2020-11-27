@@ -11,11 +11,6 @@ interface IProps {
     readonly errorFields: Array<string>;
 }
 
-const getValueBasedOnProp = function(prop: any):any {
-    if(prop == undefined || prop == null) return "";
-    return prop;
-}
-
 interface IState {
     depositType: number;
     amount: string;
@@ -109,17 +104,17 @@ class Deposit extends React.Component<IProps, IState> {
                         <div className="centered fifteen wide column">
                             <div className="fluid big ui buttons">
                                 {/* Those ones with 'active' css class is just selected state */}
-                                { this.state.depositType == 0 &&
+                                { this.state.depositType === 0 &&
                                     <button className="ui active button">No Deposit</button>
                                 }
-                                { this.state.depositType != 0 &&
+                                { this.state.depositType !== 0 &&
                                     <button className="ui button"
                                             onClick={e => {
                                                 dataOnChange({fieldName: "depositType", value: "None"});
                                                 this.setState((state, props) => ({depositType: 0}))
                                             }}>No Deposit</button>
                                 }
-                                { this.state.depositType != 1 &&
+                                { this.state.depositType !== 1 &&
                                     <button className="ui button"
                                             onClick={e => {
                                                 dataOnChange({fieldName: "depositType", value: "Fixed"});
@@ -127,17 +122,17 @@ class Deposit extends React.Component<IProps, IState> {
                                                 }
                                             }>Fixed</button>
                                 }
-                                { this.state.depositType == 1 &&
+                                { this.state.depositType === 1 &&
                                     <button className="ui active button">Fixed</button>
                                 }
-                                { this.state.depositType != 2 &&
+                                { this.state.depositType !== 2 &&
                                     <button className="ui button"
                                             onClick={e => {
                                                 dataOnChange({fieldName: "depositType", value: "Percentage"});
                                                 this.setState((state, props) => ({depositType: 2}))
                                             }}>Percentage</button>
                                 }
-                                { this.state.depositType == 2 &&
+                                { this.state.depositType === 2 &&
                                     <button className="ui active button">Percentage</button>
                                 }
                             </div>
@@ -147,10 +142,10 @@ class Deposit extends React.Component<IProps, IState> {
                     <div className="centered row">
                         <div className="seven wide column centered aligned">
                             {/* Based on selected deposit type, we are showing different type of inputbox */}
-                            { this.state.depositType == 0 &&
+                            { this.state.depositType === 0 &&
                             <Input placeholder='Not Applicable' labelPosition='right' disabled={true}></Input>
                             }
-                            { this.state.depositType == 1 &&
+                            { this.state.depositType === 1 &&
                             <Input focus
                                     placeholder={requiredFields.indexOf("amount") > -1 ? "Deposit Amount *" : "Deposit Amount"}
                                     labelPosition='right'
@@ -170,7 +165,7 @@ class Deposit extends React.Component<IProps, IState> {
                                     }
                             </Input>
                             }
-                            { this.state.depositType == 2 &&
+                            { this.state.depositType === 2 &&
                             <Input focus
                                     placeholder={requiredFields.indexOf("amount") > -1 ? "Deposit Percentage *" : "Deposit Percentage"}
                                     labelPosition='right'

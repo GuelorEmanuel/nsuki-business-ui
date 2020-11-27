@@ -1,4 +1,4 @@
-import { Input, Header, Container, Icon} from "semantic-ui-react"
+import {  Header, Icon} from "semantic-ui-react"
 import React from "react";
 import { IPeriodRevenue } from "../../Interface";
 
@@ -9,9 +9,6 @@ interface IProps {
 
 
 class Revenue extends React.Component<IProps> {
-    constructor(props: IProps) {
-        super(props);
-    }
     
     public render(): JSX.Element { 
         const { month, amount } = this.props.periodRevenue;

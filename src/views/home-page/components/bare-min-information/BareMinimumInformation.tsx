@@ -63,7 +63,7 @@ class BareMinimumInformation extends React.Component<IProps, IState> {
         
         return <>
         <Container>
-            { this.state.activeForm == 1 ?  
+            { this.state.activeForm === 1 ?  
             <div className="ui grid">
                 <div className="row">
                     <div className="centered sixteen wide column" >
@@ -94,7 +94,7 @@ class BareMinimumInformation extends React.Component<IProps, IState> {
             </div>
             : null 
             }
-            { this.state.activeForm == 2 ?
+            { this.state.activeForm === 2 ?
                 <div className="ui grid formcontainer" >
                     <div className="row white">
                         <div className="sixteen wide left aligned column" >
@@ -145,7 +145,7 @@ class BareMinimumInformation extends React.Component<IProps, IState> {
                 </div>	
                 : null 
             }
-            { this.state.activeForm == 3 ?
+            { this.state.activeForm === 3 ?
                 <div className="ui grid formcontainer">
                     <div className="row white">
                         <div className="sixteen wide left aligned column" >

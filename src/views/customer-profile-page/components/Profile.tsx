@@ -16,10 +16,6 @@ interface IState {}
 
 class Profile extends React.Component<IProps, IState> {
     
-    constructor(props: IProps) { 
-        super(props);
-    }
-
     public render(): JSX.Element { 
         const {photoUriList, customerEmail, customerPhoneNumber, customerName } = this.props;
         

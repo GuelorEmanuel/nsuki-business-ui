@@ -84,6 +84,12 @@ export default class App extends React.Component<IProps, IState> {
                 path={RouteEnum.Plan}
                 component={PlanPage}
               />
+              <ProtectedRoute
+                exact={true}
+                authenticationPath={RouteEnum.Admin}
+                path={RouteEnum.Episodes}
+                component={EpisodesPage}
+              />
               <Route component={NotFoundPage} />
             </Switch>
             <Toasts />

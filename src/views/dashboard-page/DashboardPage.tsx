@@ -105,11 +105,7 @@ var formatter = new Intl.NumberFormat(undefined, {
 
 
 class DashboardPage extends React.Component<IProps, IState> {
-    
-    constructor(props: IProps) { 
-        super(props);
-    }
-
+   
     public render(): JSX.Element { 
         const revenueProp = {amount: formatter.format(amount), month: currentMonth }
         return <>

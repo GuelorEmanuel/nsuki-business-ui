@@ -15,10 +15,6 @@ interface IState {}
 
 class CurrentPlan extends React.Component<IProps, IState> {
     
-    constructor(props: IProps) { 
-        super(props);
-    }
-
     private formatDate(myDate: Date): string{
         var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
         return month[myDate.getMonth()]+" "+myDate.getDate()+", "+myDate.getFullYear();

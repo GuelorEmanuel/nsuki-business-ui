@@ -64,7 +64,7 @@ class CalendarImport extends React.Component<IProps, IState> {
                                   defaultValue={selectedCalendar !== "" ? selectedCalendar : ""}
                                   onChange={(event, result) => {
                                                 dataOnChange({ fieldName: "calendar", 
-                                                    value: (result.value == null || result.value == undefined ? "" : (result.value as string))
+                                                    value: (result.value === null || result.value === undefined ? "" : (result.value as string))
                                                 });
                                                 this.setState((state, props) => ({error: false}))
                                               }}

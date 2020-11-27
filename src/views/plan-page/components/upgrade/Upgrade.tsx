@@ -35,7 +35,7 @@ class Upgrade extends React.Component<IProps, IState> {
         Toggle PlanType selection
     */
     handlePlanTypeClick = () =>
-        this.setState((prevState) => ({ currentSelection: (prevState.currentSelection == PlanType.Monthly) ? PlanType.Annual : PlanType.Monthly }))
+        this.setState((prevState) => ({ currentSelection: (prevState.currentSelection === PlanType.Monthly) ? PlanType.Annual : PlanType.Monthly }))
 
     handleUpdateClick = () => {
         this.props.updateHandler(PlanType[this.state.currentSelection]);
@@ -70,13 +70,13 @@ class Upgrade extends React.Component<IProps, IState> {
                         if(Object.entries(upgradePlan.paymentOptionsAndFee).length > index) {
                             return (
                                 <Fragment>
-                                    <Button toggle active={this.state.currentSelection == key} onClick={this.handlePlanTypeClick}>{ key }</Button>
+                                    <Button toggle active={this.state.currentSelection === key} onClick={this.handlePlanTypeClick}>{ key }</Button>
                                     <Button.Or />
                                 </Fragment>
                             );
                         } else {
                             return (  
-                                <Button toggle active={this.state.currentSelection == key} onClick={this.handlePlanTypeClick}> { key } </Button>
+                                <Button toggle active={this.state.currentSelection === key} onClick={this.handlePlanTypeClick}> { key } </Button>
                             )    
                         }
                     })}

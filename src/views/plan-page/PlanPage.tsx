@@ -28,11 +28,7 @@ const upgradePlan:IPlan = {
 }
 
 class PlanPage extends React.Component<IProps, IState> {
-    
-    constructor(props: IProps) { 
-        super(props);
-    }
-
+   
     updateHandler = (selectedPlanType: PlanType) => {/* define handle body here */}
     handleBackClick = () => {/* define handle body here */}
 
