@@ -27,7 +27,7 @@ const serviceLocation = [
 ]
 
 const getValueBasedOnProp = function(prop: any):string {
-    if(prop == undefined || prop == null) return "";
+    if(prop === undefined || prop === null) return "";
     return prop;
 }
 

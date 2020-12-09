@@ -11,10 +11,6 @@ interface IProps {
 
 class ScheduleManagement extends React.Component<IProps, IState> {
     
-    constructor(props: IProps) { 
-        super(props);
-    }
-
     public render(): JSX.Element { 
         const { appointmentList } = this.props;
 
@@ -59,7 +55,7 @@ class ScheduleManagement extends React.Component<IProps, IState> {
                                 </div>
                             </div>
 
-                            { appointmentList[appointmentList.length-1] != appointment &&  
+                            { appointmentList[appointmentList.length-1] !== appointment &&  
                                 <Divider section />
                             }
 
@@ -67,16 +63,8 @@ class ScheduleManagement extends React.Component<IProps, IState> {
 
                         ))
                     }
-
-                    
-                    
-                    
-
-                    
-                    
                 </Segment>
-                
-
+            
             </div>
 
         </Container>

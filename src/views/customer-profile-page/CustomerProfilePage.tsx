@@ -37,11 +37,7 @@ const imageList:Array<string> = [
 
 
 class CustomerProfilePage extends React.Component<IProps, IState> {
-    
-    constructor(props: IProps) { 
-        super(props);
-    }
-
+   
     public render(): JSX.Element { 
         
         return <>
