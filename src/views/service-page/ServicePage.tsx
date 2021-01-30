@@ -43,8 +43,8 @@ class ServicePage extends React.Component<IProps, IState> {
     validateFormFields():boolean {
 
         dataMap.forEach((value: string, key: string) => {
-            if(this.requiredFieldsForServiceForm.indexOf(key) == -1 
-                && this.requiredFieldsForDepositForm.indexOf(key) == -1) {
+            if(this.requiredFieldsForServiceForm.indexOf(key) === -1 
+                && this.requiredFieldsForDepositForm.indexOf(key) === -1) {
                 return;
             }
             
