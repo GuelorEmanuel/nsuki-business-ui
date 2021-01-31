@@ -1,6 +1,5 @@
 import React from "react";
-import { Dropdown, Form, Header, Label, Input } from "semantic-ui-react";
-import { address } from "faker";
+import { Dropdown, Form, Header, Label } from "semantic-ui-react";
 import _ from "lodash";
 import { IFormFieldData } from "../../Interface";
 
