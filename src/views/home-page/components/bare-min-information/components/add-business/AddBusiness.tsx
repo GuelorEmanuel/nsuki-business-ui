@@ -1,6 +1,5 @@
 import React from "react";
 import { Dropdown, Form, Header, Label } from "semantic-ui-react";
-import _ from "lodash";
 import { IFormFieldData } from "../../Interface";
 
 interface IProps {

@@ -15,7 +15,6 @@ import IAuthState from "../../../../stores/auth/models/IAuthState";
 import BusinessesAction from "../../../../stores/business/BusinessesAction";
 import AddBusiness from "./components/add-business/AddBusiness";
 import IToastsState from "../../../../stores/toasts/models/IToastsState";
-import { stat } from "fs";
 
 interface IProps {}
 interface IState {
@@ -73,11 +72,7 @@ class BareMinimumInformation extends React.Component<
   }
 
   public componentDidMount(): void {
-    this.state = {
-      activeForm: 1,
-      error: false,
-      formState: new Map()
-    };
+    this.setState(() => ({activeForm: 1, error: false, formState: new Map()}));
     this.props.dispatch(CalendarAction.requestCalendar());
   }
 

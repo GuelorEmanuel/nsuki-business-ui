@@ -7,7 +7,6 @@ import { selectRequesting } from "../../selectors/requesting/RequestingSelector"
 import { Container } from "semantic-ui-react";
 import React from "react";
 import BareMinimumInformation from "./components/bare-min-information/BareMinimumInformation";
-import ICalendarState from "../../stores/calendar/models/ICalendarState";
 import IAuthState from "../../stores/auth/models/IAuthState";
 import IBusinessesState from "stores/business/models/IBusinessesState";
 

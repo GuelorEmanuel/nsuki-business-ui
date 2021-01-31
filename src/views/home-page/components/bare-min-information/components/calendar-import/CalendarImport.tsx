@@ -1,6 +1,6 @@
 import React from "react";
 import { Dropdown, Form, Header, Label } from "semantic-ui-react";
-import { IFormFieldData, IDropDownItemProps } from "../../Interface";
+import { IFormFieldData } from "../../Interface";
 import CalendarModel from "../../../../../../stores/calendar/models/calendar/CalendarModel";
 
 import styles from "./CalendarImport.module.scss";
@@ -18,7 +18,6 @@ interface IProps {
 interface IState {
   error: boolean;
 }
-interface IStateToProps {}
 
 class CalendarImport extends React.Component<IProps, IState> {
   private a: boolean = false;
