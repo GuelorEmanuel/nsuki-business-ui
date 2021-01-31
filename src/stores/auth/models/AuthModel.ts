@@ -22,7 +22,7 @@ export default class AuthModel extends BaseModel {
   public readonly nbs_refresh_exp: number = 0;
   public readonly nbs_access_token: string = "";
   public readonly nbs_access_exp: number = 0;
-  public readonly user?: UserModel = undefined;
+  public readonly user: UserModel = UserModel as any;
 
   /*
    * Client-Side properties (Not from API)
