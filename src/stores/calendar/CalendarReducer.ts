@@ -23,7 +23,7 @@ export default class CalendarReducer extends BaseReducer<ICalendarState> {
   ): ICalendarState {
     return {
       ...state,
-      calendar: action.payload ? action.payload : <CalendarListModel>(<unknown>{
+      calendar: action.payload ? action.payload : ({
             data: {
               nextSyncToken: "",
               nextPageToken: "",
@@ -31,7 +31,7 @@ export default class CalendarReducer extends BaseReducer<ICalendarState> {
               kind: "",
               items: []
             }
-          })
+          } as unknown) as CalendarListModel
     };
   }
 }
