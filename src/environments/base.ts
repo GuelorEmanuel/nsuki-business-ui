@@ -14,7 +14,9 @@ export default function baseEnv(baseApi: string) {
       shows: `${baseApi}/shows/:showId`,
       auth: `${baseApi}/auth/google?scope=email%20profile`,
       auth_get_credential: `${baseApi}/auth/get_credential/:token`,
+      calendar: `${baseApi}/calendar`,
       users: `${baseApi}/users/:id`,
+      on_boarding: `${baseApi}/businesses/on_boarding`,
       callBack: `${baseApi}/auth/google?scope=email profile https://www.googleapis.com/auth/calendar&redirectTo=https://localhost:3000/auth/google/callback`,
       errorExample: "https://httpstat.us/520"
     },

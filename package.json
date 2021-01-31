@@ -43,11 +43,13 @@
   },
   "dependencies": {
     "@artsy/fresnel": "^1.2.0",
+    "@types/faker": "5.1.5",
     "@types/redux-logger": "^3.0.8",
     "axios": "0.19.2",
     "classnames": "2.2.6",
     "connected-react-router": "6.7.0",
     "dayjs": "1.8.21",
+    "faker": "5.1.0",
     "history": "4.10.1",
     "lodash.groupby": "4.6.0",
     "moment": "^2.27.0",

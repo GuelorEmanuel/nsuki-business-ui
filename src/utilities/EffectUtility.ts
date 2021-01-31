@@ -1,7 +1,7 @@
-import { IConstructor } from '../models/IConstructor';
-import HttpErrorResponseModel from '../models/HttpErrorResponseModel';
-import { AxiosResponse } from 'axios';
-import HttpUtility from './HttpUtility';
+import { IConstructor } from "../models/IConstructor";
+import HttpErrorResponseModel from "../models/HttpErrorResponseModel";
+import { AxiosResponse } from "axios";
+import HttpUtility from "./HttpUtility";
 
 type FlattenIfArray<T> = T extends (infer R)[] ? R : T;
 type SingleItemOrArray<T> = T extends [] ? T[] : T;
@@ -10,9 +10,16 @@ export default class EffectUtility {
   public static async getToModel<T>(
     Model: IConstructor<FlattenIfArray<T>>,
     endpoint: string,
-    params?: any
+    params?: any,
+    requestParams?: any
   ): Promise<SingleItemOrArray<T> | HttpErrorResponseModel> {
-    const response: AxiosResponse | HttpErrorResponseModel = await HttpUtility.get(endpoint, params);
+    const response:
+      | AxiosResponse
+      | HttpErrorResponseModel = await HttpUtility.get(
+      endpoint,
+      params,
+      requestParams
+    );
 
     return EffectUtility._restModelCreator<T>(Model, response);
   }
@@ -20,9 +27,16 @@ export default class EffectUtility {
   public static async postToModel<T>(
     Model: IConstructor<FlattenIfArray<T>>,
     endpoint: string,
-    data?: any
+    data?: any,
+    requestParams?: any
   ): Promise<SingleItemOrArray<T> | HttpErrorResponseModel> {
-    const response: AxiosResponse | HttpErrorResponseModel = await HttpUtility.post(endpoint, data);
+    const response:
+      | AxiosResponse
+      | HttpErrorResponseModel = await HttpUtility.post(
+      endpoint,
+      data,
+      requestParams
+    );
 
     return EffectUtility._restModelCreator<T>(Model, response);
   }
@@ -35,6 +49,8 @@ export default class EffectUtility {
       return response;
     }
 
-    return !Array.isArray(response.data) ? new Model(response.data) : (response.data.map((json) => new Model(json)) as any);
+    return !Array.isArray(response.data)
+      ? new Model(response.data)
+      : (response.data.map(json => new Model(json)) as any);
   }
 }
