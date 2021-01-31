@@ -6,15 +6,15 @@ import CalendarListModel from "./models/CalendarListModel";
 
 export default class CalendarReducer extends BaseReducer<ICalendarState> {
   public readonly initialState: ICalendarState = {
-    calendar: <CalendarListModel>(<unknown>{
+    calendar: ({
       data: {
         nextSyncToken: "",
         nextPageToken: "",
         etag: "",
         kind: "",
         items: []
-      }
-    })
+      } 
+    } as unknown) as CalendarListModel
   };
 
   public [CalendarAction.REQUEST_CALENDAR_FINISHED](
