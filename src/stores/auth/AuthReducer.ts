@@ -3,6 +3,7 @@ import IAuthState from "./models/IAuthState";
 import AuthAction from "./AuthAction";
 import IAction from "../../models/IAction";
 import AuthModel from "./models/AuthModel";
+import UserModel from "./models/users/UserModel";
 
 export default class AuthReducer extends BaseReducer<IAuthState> {
   public readonly initialState: IAuthState = {
@@ -10,7 +11,14 @@ export default class AuthReducer extends BaseReducer<IAuthState> {
     nbs_refresh_exp: 0,
     nbs_access_token: "",
     nbs_access_exp: 0,
-    user: undefined
+    user: {
+      id: -1,
+      image: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      verified: false
+    } as UserModel
   };
 
   public [AuthAction.REQUEST_AUTH_FINISHED](
@@ -31,7 +39,7 @@ export default class AuthReducer extends BaseReducer<IAuthState> {
       nbs_access_exp: action.payload?.nbs_access_exp
         ? action.payload?.nbs_access_exp
         : 0,
-      user: action.payload?.user ? action.payload.user : undefined
+      user: action.payload?.user ? action.payload.user : this.initialState.user
     };
   }
 

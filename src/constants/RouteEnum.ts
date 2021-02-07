@@ -8,7 +8,8 @@ enum RouteEnum {
   Dashboard = "/dashboard",
   CustomerProfile = "/customerprofile",
   Plan = "/plan",
-  Callback = "/auth/:provider/callback"
+  Callback = "/auth/:provider/callback",
+  Service = "/service"
 }
 
 export default RouteEnum;

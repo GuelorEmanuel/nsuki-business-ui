@@ -12,7 +12,7 @@ import { BaseModel } from "sjs-base-model";
     }
  */
 export default class UserModel extends BaseModel {
-  public readonly id: number | undefined = undefined;
+  public readonly id: number = -1;
   public readonly first_name: string = "";
   public readonly last_name: string = "";
   public readonly email: string = "";

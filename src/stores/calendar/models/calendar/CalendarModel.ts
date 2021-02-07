@@ -38,13 +38,13 @@
 
 */
 
-// This structure represent CalendarModel entity within CalendarListModel 
+// This structure represent CalendarModel entity within CalendarListModel
 
 import { BaseModel } from "sjs-base-model";
 
 class Notification {
-    public readonly type: string = "";
-    public readonly method: string = "";
+  public readonly type: string | null = "";
+  public readonly method: string | null = "";
 }
 
 class NotificationSettings {
@@ -52,43 +52,43 @@ class NotificationSettings {
 }
 
 class DefaultReminder {
-  public readonly method: string = "";
-  public readonly minutes: number = 0;
+  public readonly method: string | null = "";
+  public readonly minutes: number | null = 0;
 }
 
 class ConferenceProperties {
-    public readonly allowedConferenceSolutionTypes: string[] = [];
+  public readonly allowedConferenceSolutionTypes: string[] = [];
 }
 
 export default class CalendarModel extends BaseModel {
-  public readonly kind: string = "";
-  public readonly etag: string = "";
-  public readonly id: string = "";
-  public readonly summary: string = "";
-  public readonly description: string = "";
+  public readonly kind: string | null = "";
+  public readonly etag: string | null = "";
+  public readonly id: string | null = "";
+  public readonly summary: string | null = "";
+  public readonly description: string | null = "";
 
-  public readonly location: string = "";
-  public readonly timeZone: string = "";
-  public readonly summaryOverride: string = "";
-  public readonly colorId: string = "";
-  public readonly backgroundColor: string = "";
-  public readonly foregroundColor: string = "";
-  public readonly hidden: boolean = false;
-  public readonly selected: boolean = false;
-  public readonly accessRole: string = "";
+  public readonly location: string | null = "";
+  public readonly timeZone: string | null = "";
+  public readonly summaryOverride: string | null = "";
+  public readonly colorId: string | null = "";
+  public readonly backgroundColor: string | null = "";
+  public readonly foregroundColor: string | null = "";
+  public readonly hidden: boolean | null = false;
+  public readonly selected: boolean | null = false;
+  public readonly accessRole: string | null = "";
 
   public readonly defaultReminders: DefaultReminder[] = [];
 
-  public readonly notificationSettings: NotificationSettings = new NotificationSettings();
+  public readonly notificationSettings: NotificationSettings | null = new NotificationSettings();
 
-  public readonly primary: boolean = false;
-  public readonly deleted: string = "";
+  public readonly primary: boolean | null = false;
+  public readonly deleted: string | null = "";
   public readonly conferenceProperties: ConferenceProperties = new ConferenceProperties();
 
   /*
    * Client-Side properties (Not from API)
    */
-  
+
   constructor(data: Partial<CalendarModel>) {
     super();
 

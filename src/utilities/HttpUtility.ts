@@ -1,69 +1,92 @@
-import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
-import HttpErrorResponseModel from '../models/HttpErrorResponseModel';
+import axios, { AxiosRequestConfig, AxiosResponse, Method } from "axios";
+import HttpErrorResponseModel from "../models/HttpErrorResponseModel";
 
 export enum RequestMethod {
-  Get = 'GET',
-  Post = 'POST',
-  Put = 'PUT',
-  Delete = 'DELETE',
-  Options = 'OPTIONS',
-  Head = 'HEAD',
-  Patch = 'PATCH',
+  Get = "GET",
+  Post = "POST",
+  Put = "PUT",
+  Delete = "DELETE",
+  Options = "OPTIONS",
+  Head = "HEAD",
+  Patch = "PATCH"
 }
 
 export default class HttpUtility {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() {}
 
-  public static async get(endpoint: string, params?: any, requestConfig?: AxiosRequestConfig): Promise<AxiosResponse | HttpErrorResponseModel> {
-    const paramsConfig: AxiosRequestConfig | undefined = params ? { params } : undefined;
+  public static async get(
+    endpoint: string,
+    params?: any,
+    requestConfig?: AxiosRequestConfig
+  ): Promise<AxiosResponse | HttpErrorResponseModel> {
+    const paramsConfig: AxiosRequestConfig | undefined = params
+      ? { params }
+      : undefined;
 
     return HttpUtility._request(
       {
         url: endpoint,
-        method: RequestMethod.Get,
+        method: RequestMethod.Get
       },
       {
         ...paramsConfig,
-        ...requestConfig,
+        ...requestConfig
       }
     );
   }
 
-  public static async post(endpoint: string, data?: any): Promise<AxiosResponse | HttpErrorResponseModel> {
+  public static async post(
+    endpoint: string,
+    data?: any,
+    requestConfig?: AxiosRequestConfig
+  ): Promise<AxiosResponse | HttpErrorResponseModel> {
     const config: AxiosRequestConfig | undefined = data ? { data } : undefined;
 
     return HttpUtility._request(
       {
         url: endpoint,
-        method: RequestMethod.Post,
+        method: RequestMethod.Post
       },
-      config
+      {
+        ...config,
+        ...requestConfig
+      }
     );
   }
 
-  public static async put(endpoint: string, data?: any): Promise<AxiosResponse | HttpErrorResponseModel> {
+  public static async put(
+    endpoint: string,
+    data?: any
+  ): Promise<AxiosResponse | HttpErrorResponseModel> {
     const config: AxiosRequestConfig | undefined = data ? { data } : undefined;
 
     return HttpUtility._request(
       {
         url: endpoint,
-        method: RequestMethod.Put,
+        method: RequestMethod.Put
       },
       config
     );
   }
 
-  public static async delete(endpoint: string): Promise<AxiosResponse | HttpErrorResponseModel> {
+  public static async delete(
+    endpoint: string
+  ): Promise<AxiosResponse | HttpErrorResponseModel> {
     return HttpUtility._request({
       url: endpoint,
-      method: RequestMethod.Delete,
+      method: RequestMethod.Delete
     });
   }
 
-  private static async _request(restRequest: Partial<Request>, config?: AxiosRequestConfig): Promise<AxiosResponse | HttpErrorResponseModel> {
+  private static async _request(
+    restRequest: Partial<Request>,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse | HttpErrorResponseModel> {
     if (!Boolean(restRequest.url)) {
-      console.error(`Received ${restRequest.url} which is invalid for a endpoint url`);
+      console.error(
+        `Received ${restRequest.url} which is invalid for a endpoint url`
+      );
     }
 
     try {
@@ -72,11 +95,14 @@ export default class HttpUtility {
         method: restRequest.method as Method,
         url: restRequest.url,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          ...config?.headers,
-        },
+          "Content-Type": "application/x-www-form-urlencoded",
+          ...config?.headers
+        }
       };
-      const [axiosResponse] = await Promise.all([axios(axiosRequestConfig), HttpUtility._delay()]);
+      const [axiosResponse] = await Promise.all([
+        axios(axiosRequestConfig),
+        HttpUtility._delay()
+      ]);
 
       const { status, data, request } = axiosResponse;
 
@@ -84,31 +110,33 @@ export default class HttpUtility {
         return HttpUtility._fillInErrorWithDefaults(
           {
             status,
-            message: data.errors.join(' - '),
+            message: data.errors.join(" - "),
             errors: data.errors,
             url: request ? request.responseURL : restRequest.url,
-            raw: axiosResponse,
+            raw: axiosResponse
           },
           restRequest
         );
       }
 
       return {
-        ...axiosResponse,
+        ...axiosResponse
       };
     } catch (error) {
       if (error.response) {
         // The request was made and the server responded with a status code that falls out of the range of 2xx
         const { status, statusText, data } = error.response;
-        const errors: string[] = data.hasOwnProperty('errors') ? [statusText, ...data.errors] : [statusText];
+        const errors: string[] = data.hasOwnProperty("errors")
+          ? [statusText, ...data.errors]
+          : [statusText];
 
         return HttpUtility._fillInErrorWithDefaults(
           {
             status,
-            message: errors.filter(Boolean).join(' - '),
+            message: errors.filter(Boolean).join(" - "),
             errors,
             url: error.request.responseURL,
-            raw: error.response,
+            raw: error.response
           },
           restRequest
         );
@@ -122,7 +150,7 @@ export default class HttpUtility {
             message: statusText,
             errors: [statusText],
             url: responseURL,
-            raw: error.request,
+            raw: error.request
           },
           restRequest
         );
@@ -135,19 +163,24 @@ export default class HttpUtility {
           message: error.message,
           errors: [error.message],
           url: restRequest.url!,
-          raw: error,
+          raw: error
         },
         restRequest
       );
     }
   }
 
-  private static _fillInErrorWithDefaults(error: Partial<HttpErrorResponseModel>, request: Partial<Request>): HttpErrorResponseModel {
+  private static _fillInErrorWithDefaults(
+    error: Partial<HttpErrorResponseModel>,
+    request: Partial<Request>
+  ): HttpErrorResponseModel {
     const model = new HttpErrorResponseModel();
 
     model.status = error.status || 0;
-    model.message = error.message || 'Error requesting data';
-    model.errors = error.errors!.length ? error.errors! : ['Error requesting data'];
+    model.message = error.message || "Error requesting data";
+    model.errors = error.errors!.length
+      ? error.errors!
+      : ["Error requesting data"];
     model.url = error.url || request.url!;
     model.raw = error.raw;
 
@@ -167,6 +200,6 @@ export default class HttpUtility {
    * @private
    */
   private static _delay(duration: number = 250): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, duration));
+    return new Promise(resolve => setTimeout(resolve, duration));
   }
 }
