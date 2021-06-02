@@ -83,7 +83,7 @@ export default class DesktopContainer extends React.PureComponent<
                 once={false}
                 onBottomPassed={this.showFixedMenu}
                 onBottomPassedReverse={this.hideFixedMenu}
-              >
+              > 
                 {auth.nbs_refresh_token && (
                   <div
                     style={{
@@ -120,6 +120,7 @@ export default class DesktopContainer extends React.PureComponent<
                         name="clients"
                         active={activeItem === "clients"}
                         onClick={this.handleItemClick}
+                        disabled = { auth.user.verified ? false : true }
                       >
                         <Icon
                           style={{ float: "left", paddingRight: "2em" }}
@@ -131,8 +132,9 @@ export default class DesktopContainer extends React.PureComponent<
                         name="services"
                         active={activeItem === "services"}
                         onClick={this.handleItemClick}
+                        disabled = { auth.user.verified ? false : true }
                       >
-                        Services
+                        Services 
                         <Icon
                           style={{ float: "left", paddingRight: "2em" }}
                           name="cut"
@@ -141,6 +143,7 @@ export default class DesktopContainer extends React.PureComponent<
                       <Menu.Item
                         active={activeItem === "settings"}
                         onClick={this.handleItemClick}
+                        disabled = { auth.user.verified ? false : true }
                       >
                         <Icon
                           style={{ float: "left", paddingRight: "2em" }}
@@ -223,10 +226,13 @@ export default class DesktopContainer extends React.PureComponent<
                             className="link item"
                           >
                             <Dropdown.Menu style={{ marginTop: "1.5em" }}>
-                              <Dropdown.Item>
-                                <Icon name="user outline"></Icon>
-                                <Link to="/admin/account">Your account</Link>
-                              </Dropdown.Item>
+                              { auth.user.verified ?  
+                                  <Dropdown.Item>
+                                    <Icon name="user outline"></Icon>
+                                    <Link to="/admin/account">Your account</Link> 
+                                  </Dropdown.Item> :
+                                  null
+                              }  
                               <Dropdown.Item onClick={logout}>
                                 <Icon name="sign out alternate"></Icon>Logout
                               </Dropdown.Item>

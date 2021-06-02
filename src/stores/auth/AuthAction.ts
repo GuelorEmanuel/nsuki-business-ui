@@ -18,6 +18,9 @@ export default class AuthAction {
   public static readonly RESET_AUTH_FINISHED: string =
     "AuthAction.RESET_AUTH_FINISHED";
 
+  public static readonly SET_AUTH_VERIFIED: string =
+    "AuthAction.SET_AUTH_VERIFIED";  
+
   public static requestAuth(): any {
     return async (dispatch: ReduxDispatch<ActionUnion>): Promise<void> => {
       let search = window.location.search;
@@ -37,6 +40,14 @@ export default class AuthAction {
     return async (dispatch: ReduxDispatch<ActionUnion>): Promise<void> => {
       dispatch(
         ActionUtility.createAction<undefined>(AuthAction.RESET_AUTH_FINISHED)
+      );
+    };
+  }
+
+  public static setVerified(): any {
+    return async (dispatch: ReduxDispatch<ActionUnion>): Promise<void> => {
+      dispatch(
+        ActionUtility.createAction<undefined>(AuthAction.SET_AUTH_VERIFIED)
       );
     };
   }
