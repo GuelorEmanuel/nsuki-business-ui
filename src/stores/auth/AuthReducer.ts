@@ -52,4 +52,16 @@ export default class AuthReducer extends BaseReducer<IAuthState> {
       ...this.initialState
     };
   }
+
+  public [AuthAction.SET_AUTH_VERIFIED](
+    state: IAuthState,
+    action: IAction<AuthModel>
+  ): IAuthState {
+    let newUserModelState = new UserModel({verified: true});
+    return {
+      ...state,
+      user: newUserModelState
+    };
+  }
+  
 }

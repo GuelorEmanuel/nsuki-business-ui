@@ -15,6 +15,7 @@ import IAuthState from "../../../../stores/auth/models/IAuthState";
 import BusinessesAction from "../../../../stores/business/BusinessesAction";
 import AddBusiness from "./components/add-business/AddBusiness";
 import IToastsState from "../../../../stores/toasts/models/IToastsState";
+import AuthAction from "stores/auth/AuthAction";
 
 interface IProps {}
 interface IState {
@@ -63,7 +64,7 @@ class BareMinimumInformation extends React.Component<
 
   constructor(props: IProps & IStateToProps & ReduxProps<any, IRouteParams>) {
     super(props);
-
+    
     this.state = {
       activeForm: 1,
       error: false,
@@ -384,10 +385,6 @@ class BareMinimumInformation extends React.Component<
                 <div className="row">
                   <Form
                     onSubmit={() => {
-                      console.log(
-                        "addServiceDataMap: ",
-                        this.addServiceDataMap
-                      );
                       if (
                         this.addServiceDataMap["depositType"] === "None" ||
                         (this.validateFormFields(
@@ -406,8 +403,11 @@ class BareMinimumInformation extends React.Component<
                     }}
                   >
                     <div className="four wide centered middle aligned column">
-                      <Button type="submit" className="fluid ui formlink">
-                        Done
+                      <Button type="submit" className="fluid ui formlink" onClick={() => {
+                        this.props.dispatch(AuthAction.setVerified()); 
+                        this.props.history.push("/dashboard") 
+                      }}>
+                        Done 
                       </Button>
                     </div>
                   </Form>
